@@ -1,5 +1,29 @@
 {
   "name": "@calc/desktop",
   "private": true,
-  "version": "0.0.0"
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build:web": "pnpm --filter @calc/web build && node scripts/copy-web-build.js",
+    "dist": "pnpm run build:web && electron-builder --win"
+  },
+  "build": {
+    "appId": "com.calcraise.desktop",
+    "productName": "Calc.",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "web-dist/**/*"
+    ],
+    "win": {
+      "target": "portable"
+    }
+  },
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3"
+  }
 }

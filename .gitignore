@@ -25,6 +25,7 @@ obj/
 # --- Electron ---
 out/
 release/
+/apps/desktop/web-dist/
 
 # --- Env / secrets ---
 .env
