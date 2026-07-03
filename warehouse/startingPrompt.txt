@@ -1,0 +1,41 @@
+Calc. Raise, An Advanced Weightlifting Tracker Program
+
+"Use-case" ler:
+- Uygulamaya custom antrenman programları eklenilebilecek, bu antrenman programları haftalık olarak günlere yayılımlı eklenecek. Temel olarak bir tablo ekranı olacak ve şu veriler girilebilecek:
+    * Kolonlar: Hareket Bölgesi, Egzersiz adı, Uygulanan metod (her zaman dolu olmak zorunda değil), hareketin hedef set ve tekrar aralıkları, o haftanın set ve tekrarlarının girileceği ayrı ayrı set ve tekrar sayılarının bulunduğu tek bir özel kolon, aynı şekilde geçen haftanın girilen set ve tekrar verileri (bu alan read-only olmalı, update edilmemeli), son olarak bu haftanın ve geçen haftanın verilerini kontrol ederek en yüksek load un bulunduğu kolonu yazacak all-time PR kolonu (yine burada da set ve tekrar sayıları olacak ve read-only olacak).
+- PR hesaplamasında matematiksel olarak şöyle bir "convention" olacak: tekrar sayısı ne olursa olsun, set sayısı daha önemli bir PR metriğidir. Ör: 2 şer set 6 tekrar yani 2/6-6, 1 set 12 tekrardan yani 1/12 daha büyük bir PR'dır. Benzer şekilde aynı set ve tekrar sayıları, ağırlık metriğinden daha aşağıdadır. Ör: 60kg 2/6-6 > 65 1/8. Bu "convention" hakkında "progressive overload" odaklı bir yaklaşım izlemek istedim, eğer burada yanlış bir anlayış olduğunu düşünüyorsan bana belirtmekten çekinme önceden bir araştırma yap. Zaten şu an planlama aşamasındayız.
+- Uygulamada bu tablonun ayrı bir görünüm özelliği daha olacak. O da hafta hafta yayılım görüntüsü. Bu tabloda;
+    * Bir heat-map tarzı yapı istiyorum. Bu özelliği ilgili kas gruplarının yeterince dinlenip dinlenemediğini test etmek için istiyorum. Araya kaç gün koyulmalı vs.
+    * Bu tabloda kolonlar haftanın 7 günü olacak, her günün kolonunda, sadece diğer detaylı tablodaki "egzersiz adları" yazacak. Belki hacim kontrolü için set sayılarını da yazabiliriz.
+- Uygulamayı kullanırken sadece o haftanın verilerini ben gireceğim. Sonraki hafta, eskiyen veriler, geçen hafta verisine geçecek, PR kolonu da yapılan PR metriklerine göre geçen hafta ve bu hafta verilerinin maksimumunu alıp oluşturulacak. Haftalık bu düzen korunarak ilerlenecek.
+- Bu haftalık ilerleme yapılırken, akıllı bir progressive-overload katsayı algoritması kullanılmasını istiyorum, burada fikirlere açığım. Her kas grubunun gelişme çalışma sistemi farklıdır, bunları göz önünde bulundurarak hangilerinde ne kadar gelişim ne kadar önemli artış var bunun ölçeğini hafta hafta tutmak ve gelişip gelişmediğimi görmek istiyorum. Bunları da ayrı bir sayfada veya başta anlattığım ana tabloda bir ekstra kolon olarak ekleyebiliriz.
+
+"Tech-stack":
+- Uygulamayı 2 ana katmana bölebiliriz; frontend ve backend:
+    * Frontend tarafını ise 3 katmana böleceğiz: web (React.js), desktop (Electron.js, React.js) ve mobil (React Native and Expo)
+    * Backend tarafında ise .NET Core, PostgreSQL ve remote db için Neondb kullanmak istiyorum.
+    * "Design" tarafında retro bir tasarım isteyeceğim, bunun dışında aklına gelen ve verimli kod oluşturabilecek css ve web design kütüphanelerini kullanabiliriz.
+
+"Kod Felsefesi":
+- Bu uygulamayı geliştirirken, minimum bakım maliyeti istiyorum. Efektif ve anlaşılabilir, aynı zamanda "scalable" ve yüksek performans çalışabilmeli.
+- Uygulamayı geliştirirken cebimden "hiç" para çıkmasını istemiyroum.
+- Kodu geliştirirken hem "framework-spesific" hem de genel kodlama mantığı olarak SOLID, DRY gibi prensiplerin yanında, efektif ve sık uygulanan "Design Pattern" ler kullanılmasını istiyorum. Web design tarafında "reusable" komponentler, sayfalar istiyorum. Ortak bir tema, belli renk seçenekleri ile basit ama şık görünen bir tasarım istiyorum. Bu tasarım aynı zamanda kolay editlenebilir ve responsive olmalı.
+- Mümkünse design tarafında 3 ayrı frontend tarafında da ortak tasarım kalıpları istiyorum.
+- Backend tarafında verinin nasıl structure edildiği çok önemli, oluşturulan tablolar normalizasyon kurallarına uymalı, gerekirse "index" ler kullanılmalı ve verimli "data fetching" yapılmalı.
+- Daha detaylı analiz için hareket bölgesi gibi veriler daha bilimsel hesaplamalar yapabilmek için artırılabilir (yani daha fazla parametreyi katabiliriz).
+- Backend MVC, Repository, Service gibi tasarım kalıplarını efektif bi' şekilde uygulayabilmeli.
+- Uygulamaya olası bir saldırı ihtimalinde backend kendini çok iyi korumalı; SQL Injection, DoS ve DDoS atakları için önlemler alınmalı.
+
+"Git-flow":
+- Uygulamayı "github" da saklayacağız, genel ilerleyiş olarak bir "develop" branch ve demo veya yeni sürüm çıkacağımız zamanlarda "release-X.X" şeklinde branchler oluşturabiliriz, daha iyi bir fikrin olursa paylaşabilirsin.
+- Geliştirmelere, açacağın talep numaraları ile birlikte söyle bir yaklaşım olarak "branch"ler açılacak: (branch_type)_CR-XXXX_(spesific_agent_name) (XXXX talep numarası), branch tipleri şu şekilde:
+    * feature
+    * bugfix
+    * hotfix
+
+"Nasıl ilerlemeli":
+- Agile bir yaklaşımla ilerlemek ve süreci tamamen sana yönetmek istiyorum. İsteklerime göre talepler oluşturmanı, bu talepleri bir backlog dosyasında tutmanı, tamamlandıkları halde "done" olarak işaretlemeni ve zamanla yeni talepler oluşturarak bir "DevOps" mühendisi gibi çalışmanı istiyorum.
+- Açtığın tasklara özel olarak görevlendirdiğin frontend developer (web ve desktop), mobile developer, backend developer (belki backend tarafında ekstra bi veritabanı optimizasyonu için birisi) ve "progressive-overload" algoritmasını belirleyen ve düzenleyen "agent" lar istiyorum.
+- İlerleyiş hızı sana bağlı, öncelikle bir demo üzerinden de ilerleyebiliriz. Yavaş veya hızlı, kararını sana bırakıyorum.
+
+Anlatacaklarım şimdilik bu kadar. Bahsettiğim şeyler hakkında derin bir analiz yapmanı, nelerin mümkün nelerin mümkün olmayacağını; nelerin mantıklı olup olmadığını, nasıl ilerlemek istediğini bana bildirmeni istiyorum. Eğer kafanı kurcalayan anlamadığın herhangi bir şey olursa bana sormaktan çekinme. Ana dizinde warehouse/ içerisindeki bu dosyayı okuduktan sonra yine aynı dizinde yeni bir dosya oluşturmanı (bu dosyaya kendin bir isim verebilirsin, beğenmezsem ben sonra değiştiririm) ve ne düşündüklerini yazmanı istiyorum, şimdilik hoşcakal.

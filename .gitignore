@@ -1,0 +1,31 @@
+# --- Node / JS (apps/web, apps/mobile, apps/desktop, packages/*) ---
+node_modules/
+dist/
+build/
+.expo/
+.expo-shared/
+*.tsbuildinfo
+.turbo/
+coverage/
+
+# --- .NET (server/) ---
+bin/
+obj/
+*.user
+.vs/
+
+# --- Electron ---
+out/
+release/
+
+# --- Env / secrets ---
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+*.pfx
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+.idea/

@@ -1,0 +1,13 @@
+{
+  "name": "calc-raise-app",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev:web": "pnpm --filter @calc/web dev",
+    "dev:mobile": "pnpm --filter @calc/mobile start",
+    "dev:desktop": "pnpm --filter @calc/desktop dev"
+  }
+}
