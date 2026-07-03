@@ -1,3 +1,4 @@
+using CalcRaise.Application.ProgressiveOverload;
 using CalcRaise.Application.Services.VolumeLoad;
 using CalcRaise.Application.WeeklyBoard;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IVolumeLoadCalculator, VolumeLoadCalculator>();
         services.AddScoped<IWeeklyBoardService, WeeklyBoardService>();
+        services.AddScoped<IProgressiveOverloadService, ProgressiveOverloadService>();
         return services;
     }
 }
