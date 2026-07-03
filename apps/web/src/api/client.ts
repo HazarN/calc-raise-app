@@ -1,4 +1,4 @@
-import type { WeeklyBoardRowDto } from './types';
+import type { WeeklyBoardRowDto, WeeklySpreadReportDto } from './types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'https://localhost:7192';
 
@@ -14,4 +14,6 @@ export const apiClient = {
   getHealth: () => getJson<{ status: string }>('/api/health'),
   getWeeklyBoard: (programDayId: number, workoutWeekId: number) =>
     getJson<WeeklyBoardRowDto[]>(`/api/program-days/${programDayId}/weekly-board?workoutWeekId=${workoutWeekId}`),
+  getWeeklySpread: (workoutWeekId: number) =>
+    getJson<WeeklySpreadReportDto>(`/api/workout-weeks/${workoutWeekId}/weekly-spread`),
 };
