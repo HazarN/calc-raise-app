@@ -1,11 +1,12 @@
-# Calc.
+# Calc. Raise Weightlifting Tracker Program
 
 Gelişmiş bir progressive-overload / haftalık antrenman takip uygulaması.
 
 Planlama ve süreç dokümanları için bkz. [`warehouse/`](./warehouse):
 - [`warehouse/startingPrompt.txt`](./warehouse/startingPrompt.txt) — orijinal proje talebi
-- [`warehouse/01-analiz-ve-degerlendirme.md`](./warehouse/01-analiz-ve-degerlendirme.md) — analiz ve fizibilite değerlendirmesi
 - [`warehouse/backlog.md`](./warehouse/backlog.md) — CR (change request) backlog'u ve karar günlüğü
+
+Analiz/ihtiyaç dokümanları ve kullanıcı yanıtları `warehouse/chats/` altında tutulur — bazen kimlik bilgisi (connection string vb.) içerebildiğinden bu klasör `.gitignore`'da, repo'ya gitmez.
 
 ## Repo Yapısı
 

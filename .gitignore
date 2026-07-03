@@ -25,6 +25,9 @@ release/
 appsettings.*.local.json
 *.pfx
 
+# --- Kullanıcı/asistan sohbet-yanıt dosyaları (bazen gerçek kimlik bilgisi içerebiliyor) ---
+warehouse/chats/
+
 # --- OS / Editor ---
 .DS_Store
 Thumbs.db
