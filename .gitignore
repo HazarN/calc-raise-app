@@ -8,6 +8,14 @@ build/
 .turbo/
 coverage/
 
+# --- Expo / React Native (apps/mobile) ---
+web-build/
+expo-env.d.ts
+.metro-health-check*
+.kotlin/
+/apps/mobile/ios
+/apps/mobile/android
+
 # --- .NET (server/) ---
 bin/
 obj/
@@ -24,6 +32,12 @@ release/
 !.env.example
 appsettings.*.local.json
 *.pfx
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
 
 # --- Kullanıcı/asistan sohbet-yanıt dosyaları (bazen gerçek kimlik bilgisi içerebiliyor) ---
 warehouse/chats/
