@@ -15,7 +15,7 @@
 | 7 | Retro tasarım | Referans görsel geldi (`warehouse/retro-design.jfif`): kalın siyah (2-3px) çerçeveli kartlar, düz (gradyansız) pastel renk bloklu diyagonal arka plan (gök mavisi / şeftali / nane yeşili), krem kart zemini, kalın mono/geometrik başlık tipografisi + sade sans body, "stat rozeti" kutuları (büyük sayı + küçük etiket), hap (pill) şeklinde arama/buton. Neo-brutalist/Y2K-pop tarzı — 90'lar Windows'tan çok "kalın çerçeveli flat-pastel dashboard" stiline yakın. `@calc/design-tokens` bu paletle doldurulacak (CR-0005 devamı). |
 | 8 | Dağıtım/maliyet | v1 tamamen ücretsiz: Windows'ta imzasız `.exe`, web'de domainsiz, mobilde Expo Go. Gerçek store yayını yok. |
 | 9 | Demo kapsamı | 3 arayüz de hedefleniyor, ağırlıklı test Expo Go + iOS. |
-| 10 | Backend erişimi (v1) | **Cloud'dan başlanacak:** Neon (Postgres, free tier) + ücretsiz bir API hosting (Azure App Service F1 / Fly.io free allowance arasında karar verilecek — bkz. `warehouse/02-ihtiyaclar-ve-bloklar.md`). Expo Go/iPhone dahil her cihazdan Wi-Fi bağımlılığı olmadan erişim sağlanacak. |
+| 10 | Backend erişimi (v1) | Neon (Postgres, free tier) **canlıda** — bkz. CR-0003 notu. API hosting (backend'in deploy edileceği yer) **karar bekliyor / duraklatıldı**: Fly.io/Koyeb/Railway elendi (bkz. not aşağıda), Azure App Service F1 denendi ve kullanıcı vazgeçti (hesap/kota sürtünmesi — France Central'da kota bulundu ama Web App oluşturma adımında durduruldu, oluşturulan kaynaklar silindi). Şimdilik backend yerel makinede (`dotnet run`) çalıştırılıp test ediliyor; gerçek hosting kararı sonraya bırakıldı. |
 
 ---
 
@@ -32,6 +32,7 @@
 | CR-0007 | Desktop (Electron) shell — web app'i sarmalama | Frontend (Desktop) | To Do |
 | CR-0008 | Progressive-overload katsayı servisi (genel + kas grubu bazlı) | Algoritma | To Do |
 | CR-0009 | Haftalık yayılım / heat-map görünümü | Frontend (Web) | To Do |
+| CR-0010 | Backend deployment/hosting kararı ve kurulumu | DevOps | **Paused** — bkz. karar günlüğü #10 |
 
 **Not (CR-0002/0003/0004):** Üçü de aynı `feature_CR-0002_backend` branch'inde tek commit olarak `develop`'a merge edildi — iskelet, şema ve ilk gerçek özellik (PR hesaplama) birbirinden ayrıştırılamayacak kadar sıkı bağlıydı. `dotnet build` 0 hata ile geçti; migration (`InitialCreate`) tasarım-zamanı factory ile üretildi, henüz gerçek bir Neon veritabanına uygulanmadı (bkz. ihtiyaçlar dosyası).
 
