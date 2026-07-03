@@ -28,7 +28,7 @@
 | CR-0003 | Veritabanı şeması v1 + migration: `MuscleGroup`, `Exercise`, `ExerciseMuscleGroup` (Primary/Secondary + %), `Method`, `ProgramDay`, `ProgramExercise`, `WorkoutWeek`, `WorkoutSetLog` (RIR dahil) | Backend / DB | **Done** |
 | CR-0004 | PR/Volume-Load hesaplama servisi + "bu hafta / geçen hafta / all-time PR" sorgu-view'ları | Backend | **Done** |
 | CR-0005 | Web — Vite/React/Tailwind iskeleti + haftalık tablo demo ekranı | Frontend (Web) | **Done (v0 demo)** — bkz. not aşağıda |
-| CR-0006 | Mobile (Expo) — ana tablo ekranının RN versiyonu, Expo Go üzerinde test | Mobile | To Do |
+| CR-0006 | Mobile (Expo) — ana tablo ekranının RN versiyonu, Expo Go üzerinde test | Mobile | **Done (v0 demo)** — bkz. not aşağıda |
 | CR-0007 | Desktop (Electron) shell — web app'i sarmalama | Frontend (Desktop) | To Do |
 | CR-0008 | Progressive-overload katsayı servisi (genel + kas grubu bazlı) | Algoritma | To Do |
 | CR-0009 | Haftalık yayılım / heat-map görünümü | Frontend (Web) | To Do |
@@ -38,6 +38,8 @@
 
 **Not (Node.js/pnpm):** Bu makinede Node.js/npm/pnpm hiç kurulu değildi, CR-0005/0006/0007/0009'u bloke ediyordu. winget ile Node.js LTS + `npm install -g pnpm` kurularak çözüldü — artık bloke değil.
 
-**Not (CR-0005):** `apps/web` gerçek bir Vite+React+TS+Tailwind projesi; `pnpm --filter @calc/web build` ve `dev` başarıyla çalışıyor, dev server'ın servis ettiği HTML shell doğrulandı. Ancak backend'e gerçek bir Neon bağlantı dizesi tanımlı olmadığı için (`Program.cs` bağlantı dizesi yoksa kasıtlı olarak fail-fast yapıyor) **tam uçtan-uca akış (API'den veri çekme) henüz canlı test edilemedi** — bkz. `warehouse/02-ihtiyaclar-ve-bloklar.md`. API tipleri/client'ı şimdilik el yazması (`apps/web/src/api/`); CR-0004 kapsamında NSwag ile `@calc/api-client`'a taşınacak.
+**Not (CR-0005):** `apps/web` gerçek bir Vite+React+TS+Tailwind projesi; `pnpm --filter @calc/web build` ve `dev` başarıyla çalışıyor, dev server'ın servis ettiği HTML shell doğrulandı. Backend artık canlı Neon DB'sine bağlı (bkz. CR-0003 bugfix notu), `/api/health` ve weekly-board endpoint'i doğrulandı. API tipleri/client'ı şimdilik el yazması (`apps/web/src/api/`); CR-0004 kapsamında NSwag ile `@calc/api-client`'a taşınacak.
+
+**Not (CR-0006):** `apps/mobile` gerçek bir Expo (React Native + TS) projesi; `tsc --noEmit` temiz geçti, `expo start` Metro bundler'ı hatasız ayağa kaldırdı (fiziksel cihazda Expo Go ile gerçek test henüz yapılmadı — bunu kullanıcı kendi iPhone'undan deneyecek). `src/api/client.ts`, backend hosting kararı Paused olduğu için (CR-0010) Expo'nun kendi LAN adresinden (`hostUri`) API adresini otomatik türetiyor — telefon ve backend'in aynı Wi-Fi'da olması gerekiyor, `app.json > expo.extra.apiBaseUrlOverride` ile elle de ayarlanabilir. Backend'in `ASPNETCORE_URLS=http://0.0.0.0:5080` ile (sadece localhost değil) çalıştırılması gerekiyor, bkz. `apps/mobile/README.md`.
 
 Sprint 0'ın hedefi: tek egzersiz / tek hafta ölçeğinde uçtan uca çalışan bir demo (CR-0001 → CR-0006 minimum uygulanabilir demo, CR-0007/8/9 demo sonrası eklenir).
