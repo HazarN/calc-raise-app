@@ -26,3 +26,18 @@ export interface WeeklyBoardRowDto {
   previousWeekSets: SetLogDto[];
   allTimePersonalRecord: WeeklyExerciseRecordDto | null;
 }
+
+/** dayOfWeek, System.DayOfWeek'in ham int değeridir (Sunday=0, Monday=1, ..., Saturday=6). */
+export interface WeeklySpreadCellDto {
+  dayOfWeek: number;
+  muscleGroupId: number;
+  muscleGroupName: string;
+  exerciseNames: string[];
+  totalSets: number;
+  totalVolume: number;
+  insufficientRestWarning: boolean;
+}
+
+export interface WeeklySpreadReportDto {
+  cells: WeeklySpreadCellDto[];
+}
