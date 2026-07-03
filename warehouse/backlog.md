@@ -12,7 +12,7 @@
 | 4 | Method alanı | Onaylandı: tekli, opsiyonel alan. Süperset/dropset gibi zincirleme yapılar **v1'de yok**. |
 | 5 | Progressive-overload katsayısı | Genel katsayının yanında **kas grubu bazlı** ayrı katsayılar da (bacak, ön omuz, triceps vb.) hesaplanıp gösterilecek. |
 | 6 | Kas katılım verisi | `ExerciseMuscleGroup` ilişkisine Birincil/İkincil tip + yüzde alanı eklenecek. Hareket paterni/ekipman tipi gibi ek alanlar v1'de yok. |
-| 7 | Retro tasarım | Kullanıcı ileride ilgili frontend persona'ya referans görsel verecek. Tasarım tokenları o görsel gelene kadar placeholder/nötr tutulacak. |
+| 7 | Retro tasarım | Referans görsel geldi (`warehouse/retro-design.jfif`): kalın siyah (2-3px) çerçeveli kartlar, düz (gradyansız) pastel renk bloklu diyagonal arka plan (gök mavisi / şeftali / nane yeşili), krem kart zemini, kalın mono/geometrik başlık tipografisi + sade sans body, "stat rozeti" kutuları (büyük sayı + küçük etiket), hap (pill) şeklinde arama/buton. Neo-brutalist/Y2K-pop tarzı — 90'lar Windows'tan çok "kalın çerçeveli flat-pastel dashboard" stiline yakın. `@calc/design-tokens` bu paletle doldurulacak (CR-0005 devamı). |
 | 8 | Dağıtım/maliyet | v1 tamamen ücretsiz: Windows'ta imzasız `.exe`, web'de domainsiz, mobilde Expo Go. Gerçek store yayını yok. |
 | 9 | Demo kapsamı | 3 arayüz de hedefleniyor, ağırlıklı test Expo Go + iOS. |
 | 10 | Backend erişimi (v1) | **Cloud'dan başlanacak:** Neon (Postgres, free tier) + ücretsiz bir API hosting (Azure App Service F1 / Fly.io free allowance arasında karar verilecek — bkz. `warehouse/02-ihtiyaclar-ve-bloklar.md`). Expo Go/iPhone dahil her cihazdan Wi-Fi bağımlılığı olmadan erişim sağlanacak. |
